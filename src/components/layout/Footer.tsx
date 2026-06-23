@@ -1,20 +1,78 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-800 py-12 bg-black">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h3 className="text-2xl font-bold text-violet-500 mb-4">
-          YIDSAM Creative Studio
-        </h3>
+    <footer
+      className="
+        py-10
+        border-t
+        border-zinc-800
+        bg-black
+      "
+    >
+      <div
+        className="
+          max-w-7xl
+          mx-auto
+          px-6
+          flex
+          flex-col
+          md:flex-row
+          justify-between
+          items-center
+          gap-6
+        "
+      >
+        <div>
+          <h3
+            className="
+              text-xl
+              font-bold
+              text-violet-500
+            "
+          >
+            YIDSAM
+          </h3>
 
-        <p className="text-gray-400 mb-4">
-          Graphic Designer • Video Editor • Content Creator • Voice Over Artist
-        </p>
+          <p className="text-gray-400">
+            Graphic Designer • Video Editor •
+            Content Creator • Voice Over Artist
+          </p>
+        </div>
 
-        <p className="text-gray-500 text-sm">
-          © {new Date().getFullYear()} YIDSAM Creative Studio.
-          All Rights Reserved.
-        </p>
+        <div className="flex gap-6 text-gray-400">
+          <a
+            href="#"
+            className="hover:text-violet-500 transition"
+          >
+            YouTube
+          </a>
+
+          <a
+            href="#"
+            className="hover:text-violet-500 transition"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            href="#"
+            className="hover:text-violet-500 transition"
+          >
+            Instagram
+          </a>
+        </div>
       </div>
+
+      <p
+        className="
+          text-center
+          text-gray-500
+          mt-8
+          text-sm
+        "
+      >
+        © {new Date().getFullYear()} YIDSAM.
+        All rights reserved.
+      </p>
     </footer>
   );
 }

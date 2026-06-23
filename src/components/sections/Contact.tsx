@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import {
   Mail,
   Phone,
-  ArrowRight,
+  MapPin,
 } from "lucide-react";
 
 import Container from "@/components/ui/Container";
@@ -14,96 +14,114 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 bg-[#09090B]"
+      className="py-28 bg-black"
     >
       <Container>
+
         <SectionTitle
-          title="Let's Work Together"
-          subtitle="Ready to bring your ideas to life? Let's create something amazing together."
+          title="Contact Me"
+          subtitle="Let's work together and bring your ideas to life."
         />
 
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-12">
 
           {/* Left Side */}
+
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
             className="
-              bg-zinc-900
+              rounded-3xl
               border
               border-zinc-800
-              rounded-3xl
+              bg-white/[0.03]
+              backdrop-blur-xl
               p-8
             "
           >
-            <h3 className="text-2xl font-bold mb-6">
-              Contact Information
+            <h3
+              className="
+                text-2xl
+                font-bold
+                mb-8
+              "
+            >
+              Get In Touch
             </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
 
-              <div className="flex items-center gap-4">
-                <Mail className="text-violet-500" />
+              <div className="flex gap-4 items-center">
+                <Mail
+                  size={24}
+                  className="text-violet-500"
+                />
+
                 <div>
-                  <p className="text-gray-400 text-sm">
+                  <p className="text-gray-400">
                     Email
                   </p>
-                  <p>
-                    yidnekachewsamuel47@gmail.com
+
+                  <p className="font-medium">
+                    your@email.com
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <Phone className="text-violet-500" />
+              <div className="flex gap-4 items-center">
+                <Phone
+                  size={24}
+                  className="text-violet-500"
+                />
+
                 <div>
-                  <p className="text-gray-400 text-sm">
+                  <p className="text-gray-400">
                     Phone
                   </p>
-                  <p>
-                    0952609490
+
+                  <p className="font-medium">
+                    +251 XXX XXX XXX
                   </p>
                 </div>
               </div>
 
-            </div>
+              <div className="flex gap-4 items-center">
+                <MapPin
+                  size={24}
+                  className="text-violet-500"
+                />
 
-            <div className="mt-10">
-              <a
-                href="mailto:yidnekachewsamuel47@gmail.com"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  px-6
-                  py-3
-                  bg-violet-600
-                  rounded-xl
-                  hover:bg-violet-700
-                  transition
-                "
-              >
-                Hire Me
-                <ArrowRight size={18} />
-              </a>
+                <div>
+                  <p className="text-gray-400">
+                    Location
+                  </p>
+
+                  <p className="font-medium">
+                    Ethiopia
+                  </p>
+                </div>
+              </div>
+
             </div>
           </motion.div>
 
           {/* Right Side */}
+
           <motion.form
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
             className="
-              bg-zinc-900
+              rounded-3xl
               border
               border-zinc-800
-              rounded-3xl
+              bg-white/[0.03]
+              backdrop-blur-xl
               p-8
-              space-y-5
+              space-y-6
             "
           >
             <input
@@ -113,10 +131,11 @@ export default function Contact() {
                 w-full
                 p-4
                 rounded-xl
-                bg-zinc-800
+                bg-zinc-900
                 border
-                border-zinc-700
+                border-zinc-800
                 outline-none
+                focus:border-violet-500
               "
             />
 
@@ -127,24 +146,27 @@ export default function Contact() {
                 w-full
                 p-4
                 rounded-xl
-                bg-zinc-800
+                bg-zinc-900
                 border
-                border-zinc-700
+                border-zinc-800
                 outline-none
+                focus:border-violet-500
               "
             />
 
             <textarea
-              rows={5}
-              placeholder="Tell me about your project..."
+              rows={6}
+              placeholder="Your Message"
               className="
                 w-full
                 p-4
                 rounded-xl
-                bg-zinc-800
+                bg-zinc-900
                 border
-                border-zinc-700
+                border-zinc-800
                 outline-none
+                resize-none
+                focus:border-violet-500
               "
             />
 
@@ -152,19 +174,22 @@ export default function Contact() {
               type="submit"
               className="
                 w-full
-                bg-violet-600
                 py-4
                 rounded-xl
+                bg-violet-600
+                hover:bg-violet-500
+                transition-all
+                duration-300
                 font-semibold
-                hover:bg-violet-700
-                transition
               "
             >
               Send Message
             </button>
+
           </motion.form>
 
         </div>
+
       </Container>
     </section>
   );

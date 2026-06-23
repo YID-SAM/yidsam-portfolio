@@ -7,22 +7,19 @@ import SectionTitle from "@/components/ui/SectionTitle";
 
 const testimonials = [
   {
-    name: "Abel M.",
+    name: "Client One",
     role: "Business Owner",
-    review:
-      "YIDSAM delivered exceptional graphic designs that elevated our brand identity. Highly recommended!",
+    text: "Exceptional creativity and professionalism. The final result exceeded expectations.",
   },
   {
-    name: "Sara K.",
+    name: "Client Two",
     role: "Content Creator",
-    review:
-      "The video editing quality was outstanding. Fast delivery and professional communication throughout the project.",
+    text: "Outstanding video editing skills and attention to detail. Highly recommended.",
   },
   {
-    name: "Daniel T.",
+    name: "Client Three",
     role: "Marketing Manager",
-    review:
-      "The voice-over work was clear, engaging, and exactly what we needed for our campaign.",
+    text: "Professional communication, creative solutions, and excellent delivery time.",
   },
 ];
 
@@ -30,49 +27,66 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-24 bg-[#09090B]"
+      className="py-28 bg-zinc-950"
     >
       <Container>
+
         <SectionTitle
           title="Testimonials"
-          subtitle="What clients say about working with me."
+          subtitle="Feedback from clients and collaborators."
         />
 
         <div className="grid md:grid-cols-3 gap-8">
+
           {testimonials.map((item, index) => (
+
             <motion.div
               key={item.name}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{
-                duration: 0.5,
-                delay: index * 0.1,
+                duration: 0.6,
+                delay: index * 0.15,
               }}
               className="
-                bg-zinc-900
+                rounded-3xl
                 border
                 border-zinc-800
-                rounded-3xl
+                bg-white/[0.03]
+                backdrop-blur-xl
                 p-8
               "
             >
-              <p className="text-gray-400 leading-7 mb-6">
-                "{item.review}"
+              <p
+                className="
+                  text-gray-400
+                  leading-8
+                  mb-6
+                "
+              >
+                "{item.text}"
               </p>
 
-              <div>
-                <h3 className="font-bold">
-                  {item.name}
-                </h3>
+              <h3
+                className="
+                  font-semibold
+                  text-lg
+                "
+              >
+                {item.name}
+              </h3>
 
-                <p className="text-violet-400 text-sm">
-                  {item.role}
-                </p>
-              </div>
+              <p className="text-violet-400">
+                {item.role}
+              </p>
+
             </motion.div>
+
           ))}
+
         </div>
+
       </Container>
     </section>
   );

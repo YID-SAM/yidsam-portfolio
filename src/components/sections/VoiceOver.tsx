@@ -1,12 +1,12 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { Mic } from "lucide-react";
 
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 
-const demos = [
+const voiceSamples = [
   {
     title: "Commercial Voice Over",
     file: "/audio/voice-demo-1.mp3",
@@ -16,70 +16,79 @@ const demos = [
     file: "/audio/voice-demo-2.mp3",
   },
   {
-    title: "Storytelling Demo",
+    title: "Promotional Voice Over",
     file: "/audio/voice-demo-3.mp3",
   },
 ];
 
 export default function VoiceOver() {
+  const audioRefs = useRef<(HTMLAudioElement | null)[]>([]);
+
+  const handlePlay = (currentIndex: number) => {
+    audioRefs.current.forEach((audio, index) => {
+      if (audio && index !== currentIndex) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    });
+  };
+
   return (
     <section
-      id="voice-over"
-      className="py-24 bg-[#09090B]"
+      id="voiceover"
+      className="py-28 bg-black"
     >
       <Container>
         <SectionTitle
-          title="Voice Over Showcase"
-          subtitle="Listen to samples of my professional voice-over work."
+          title="Voice Over"
+          subtitle="Listen to a selection of professional voice-over samples showcasing clarity, expression, and versatility."
         />
 
-        <div className="grid gap-6 max-w-4xl mx-auto">
-          {demos.map((demo, index) => (
+        <div className="max-w-4xl mx-auto space-y-6">
+          {voiceSamples.map((sample, index) => (
             <motion.div
-              key={demo.title}
+              key={sample.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{
-                duration: 0.5,
-                delay: index * 0.1,
+                duration: 0.6,
+                delay: index * 0.15,
               }}
               className="
-                bg-zinc-900
+                rounded-3xl
                 border
                 border-zinc-800
-                rounded-3xl
+                bg-white/[0.03]
+                backdrop-blur-xl
                 p-8
+                transition-all
+                duration-500
+                hover:border-violet-500
+                hover:shadow-xl
+                hover:shadow-violet-500/10
               "
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div
-                  className="
-                    w-12 h-12
-                    rounded-full
-                    bg-violet-500/10
-                    flex
-                    items-center
-                    justify-center
-                  "
-                >
-                  <Mic
-                    size={24}
-                    className="text-violet-500"
-                  />
-                </div>
-
-                <h3 className="text-xl font-bold">
-                  {demo.title}
-                </h3>
-              </div>
+              <h3
+                className="
+                  text-xl
+                  font-semibold
+                  mb-5
+                "
+              >
+                {sample.title}
+              </h3>
 
               <audio
+                ref={(el) => {
+                  audioRefs.current[index] = el;
+                }}
                 controls
                 className="w-full"
+                onPlay={() => handlePlay(index)}
               >
                 <source
-                  src={demo.file}
+                  src={sample.file}
                   type="audio/mpeg"
                 />
               </audio>

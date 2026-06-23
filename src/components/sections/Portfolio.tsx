@@ -1,158 +1,172 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 
 const projects = [
   {
-    title: "Brand Identity Design",
+    title: "Graphic Design Collection",
     category: "Graphic Design",
     image: "/images/projects/project1.jpg",
   },
   {
-    title: "Marketing Poster",
-    category: "Graphic Design",
+    title: "YouTube Video Editing",
+    category: "Video Editing",
     image: "/images/projects/project2.jpg",
-  },
-  {
-    title: "YouTube Documentary",
-    category: "Video Editing",
-    image: "/images/projects/project3.jpg",
-  },
-  {
-    title: "Commercial Video",
-    category: "Video Editing",
-    image: "/images/projects/project4.jpg",
   },
   {
     title: "Social Media Campaign",
     category: "Content Creation",
+    image: "/images/projects/project3.jpg",
+  },
+  {
+    title: "Brand Identity",
+    category: "Graphic Design",
+    image: "/images/projects/project4.jpg",
+  },
+  {
+    title: "Commercial Video",
+    category: "Video Editing",
     image: "/images/projects/project5.jpg",
   },
   {
-    title: "Voice Over Demo",
+    title: "Voice Over Project",
     category: "Voice Over",
     image: "/images/projects/project6.jpg",
   },
 ];
 
-const categories = [
-  "All",
-  "Graphic Design",
-  "Video Editing",
-  "Content Creation",
-  "Voice Over",
-];
-
 export default function Portfolio() {
-  const [activeCategory, setActiveCategory] =
-    useState("All");
-
-  const filteredProjects =
-    activeCategory === "All"
-      ? projects
-      : projects.filter(
-          (project) =>
-            project.category === activeCategory
-        );
-
   return (
     <section
-      id="projects"
-      className="py-24 bg-zinc-950"
+      id="portfolio"
+      className="py-28 bg-zinc-950"
     >
       <Container>
+
         <SectionTitle
-          title="Featured Projects"
-          subtitle="A showcase of my creative work."
+          title="Portfolio"
+          subtitle="A selection of creative projects showcasing design, editing, storytelling and visual communication."
         />
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() =>
-                setActiveCategory(category)
-              }
-              className={`
-                px-5 py-2 rounded-full transition
-                ${
-                  activeCategory === category
-                    ? "bg-violet-600 text-white"
-                    : "bg-zinc-900 text-gray-300"
-                }
-              `}
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+          {projects.map((project, index) => (
+
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{
+                duration: .6,
+                delay: index * .12,
+              }}
+              className="
+                group
+                overflow-hidden
+                rounded-3xl
+                border
+                border-zinc-800
+                bg-white/[0.03]
+                backdrop-blur-xl
+              "
             >
-              {category}
-            </button>
-          ))}
-        </div>
 
-        {/* Projects */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map(
-            (project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{
-                  opacity: 0,
-                  y: 30,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                className="
-                  overflow-hidden
-                  rounded-3xl
-                  bg-zinc-900
-                  border
-                  border-zinc-800
-                  group
-                "
-              >
-                <div className="overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={600}
-                    height={400}
+              {/* Image */}
+
+              <div className="relative h-72 overflow-hidden">
+
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="
+                    object-cover
+                    transition-transform
+                    duration-700
+                    group-hover:scale-110
+                  "
+                />
+
+                {/* Overlay */}
+
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-black/90
+                    via-black/30
+                    to-transparent
+                    opacity-0
+                    group-hover:opacity-100
+                    transition-all
+                    duration-500
+                    flex
+                    items-end
+                    p-6
+                  "
+                >
+
+                  <button
                     className="
-                      w-full
-                      h-60
-                      object-cover
-                      transition-transform
-                      duration-500
-                      group-hover:scale-110
+                      flex
+                      items-center
+                      gap-2
+                      px-5
+                      py-3
+                      rounded-xl
+                      bg-violet-600
+                      hover:bg-violet-500
+                      transition
                     "
-                  />
+                  >
+                    View Project
+
+                    <ArrowUpRight size={18} />
+                  </button>
+
                 </div>
 
-                <div className="p-6">
-                  <span className="text-violet-400 text-sm">
-                    {project.category}
-                  </span>
+              </div>
 
-                  <h3 className="text-xl font-bold mt-2">
-                    {project.title}
-                  </h3>
-                </div>
-              </motion.div>
-            )
-          )}
+              {/* Content */}
+
+              <div className="p-7">
+
+                <span
+                  className="
+                    inline-block
+                    text-sm
+                    text-violet-400
+                    mb-3
+                  "
+                >
+                  {project.category}
+                </span>
+
+                <h3
+                  className="
+                    text-2xl
+                    font-semibold
+                  "
+                >
+                  {project.title}
+                </h3>
+
+              </div>
+
+            </motion.div>
+
+          ))}
+
         </div>
+
       </Container>
     </section>
   );
