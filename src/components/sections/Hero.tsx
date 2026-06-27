@@ -18,12 +18,27 @@ export default function Hero() {
         via-zinc-950
         to-black
         pt-28
-        overflow-hidden
+        overflow-x-hidden overflow-y-visible
       "
     >
       {/* Background Glow */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-violet-700/10 blur-[140px] rounded-full" />
-
+      <div
+  className="
+    absolute
+    top-20
+    left-1/2
+    -translate-x-1/2
+    w-[300px]
+    h-[300px]
+    md:w-[700px]
+    md:h-[700px]
+    bg-violet-700/10
+    blur-[80px]
+    md:blur-[140px]
+    rounded-full
+    pointer-events-none
+  "
+/>
       <div
         className="
           relative
@@ -78,7 +93,7 @@ export default function Hero() {
               mb-6
             "
           >
-            Hi, I'm{" "}
+            Hi, I&apos;m{" "}
             <span className="text-violet-500">
               YIDSAM
             </span>

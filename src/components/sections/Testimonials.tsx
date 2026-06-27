@@ -65,7 +65,7 @@ export default function Testimonials() {
                   mb-6
                 "
               >
-                "{item.text}"
+                &quot;{item.text}&quot;
               </p>
 
               <h3

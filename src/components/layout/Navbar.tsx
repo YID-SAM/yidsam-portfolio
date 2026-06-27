@@ -21,8 +21,7 @@ export default function Navbar() {
       className="
         fixed
         top-0
-        left-0
-        right-0
+        inset-x-0
         z-50
         bg-black/80
         backdrop-blur-md
@@ -34,17 +33,23 @@ export default function Navbar() {
         className="
           max-w-7xl
           mx-auto
-          px-6
-          py-4
+          px-4
+          sm:px-6
+          py-3
+          sm:py-4
           flex
           items-center
           justify-between
+          gap-4
         "
       >
         <a
           href="#"
+          onClick={() => setIsOpen(false)}
           className="
-            text-2xl
+            shrink-0
+            text-xl
+            sm:text-2xl
             font-bold
             text-violet-500
           "
@@ -69,31 +74,55 @@ export default function Navbar() {
         </div>
 
         <button
+          type="button"
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
           onClick={() => setIsOpen(!isOpen)}
           className="
             md:hidden
+            inline-flex
+            h-11
+            w-11
+            shrink-0
+            items-center
+            justify-center
+            rounded-lg
+            border
+            border-zinc-700
+            bg-zinc-900
             text-white
+            hover:border-violet-500
+            hover:text-violet-400
           "
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {isOpen && (
         <div
+          id="mobile-navigation"
           className="
             md:hidden
-            bg-zinc-950
+            absolute
+            left-0
+            right-0
+            top-full
+            bg-black/95
+            backdrop-blur-md
             border-t
             border-zinc-800
+            shadow-2xl
+            shadow-black/40
           "
         >
           <div
             className="
               flex
               flex-col
-              gap-5
-              p-6
+              px-4
+              py-4
             "
           >
             {navLinks.map((link) => (
@@ -102,8 +131,12 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className="
+                  rounded-lg
+                  px-3
+                  py-3
                   text-gray-300
                   hover:text-violet-500
+                  hover:bg-violet-500/10
                   transition-colors
                 "
               >
