@@ -1,131 +1,220 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
+import { Play, X } from "lucide-react";
 
 export default function About() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <section
-      id="about"
-      className="py-24 bg-zinc-950"
-    >
-      <Container>
+    <>
+      <section
+        id="about"
+        className="py-24 bg-zinc-950"
+      >
+        <Container>
 
-        <SectionTitle
-          title="About Me"
-          subtitle="Creative Designer, Video Editor, Content Creator & Voice Over Artist."
-        />
+          <SectionTitle
+            title="About Me"
+            subtitle="Creative Designer, Video Editor, Content Creator & Voice Over Artist."
+          />
 
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-14 items-center">
 
-          {/* Video */}
+            {/* Video */}
 
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.7 }}
-          >
-            <div
-              className="
-                overflow-hidden
-                rounded-3xl
-                border
-                border-violet-500/20
-                shadow-2xl
-                shadow-violet-500/20
-              "
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: .7 }}
             >
-              <video
-                controls
-                preload="metadata"
-                poster="/images/profile/profile.jpg"
-                className="w-full rounded-3xl"
+              <button
+                onClick={() => setOpen(true)}
+                className="
+                  group
+                  relative
+                  w-full
+                  h-[360px]
+                  rounded-3xl
+                  overflow-hidden
+                  border
+                  border-violet-500/20
+                  bg-gradient-to-br
+                  from-zinc-900
+                  to-black
+                  hover:border-violet-500
+                  transition-all
+                "
               >
-                <source
-                  src="/videos/introduction.mp4"
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-          </motion.div>
+                {/* Placeholder */}
 
-          {/* About Text */}
+                <div className="absolute inset-0 bg-violet-600/10" />
 
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.7 }}
+                {/* Play Button */}
+
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    flex
+                    flex-col
+                    items-center
+                    justify-center
+                  "
+                >
+                  <div
+                    className="
+                      w-24
+                      h-24
+                      rounded-full
+                      bg-violet-600
+                      flex
+                      items-center
+                      justify-center
+                      group-hover:scale-110
+                      transition
+                    "
+                  >
+                    <Play
+                      fill="white"
+                      className="ml-1"
+                      size={40}
+                    />
+                  </div>
+
+                  <h3 className="text-2xl font-bold mt-8">
+                    View Introduction Video
+                  </h3>
+
+                  <p className="text-gray-400 mt-2">
+                    Click to watch
+                  </p>
+                </div>
+              </button>
+            </motion.div>
+
+            {/* About */}
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+            >
+
+              <h3 className="text-3xl font-bold mb-6">
+                Bringing Ideas To Life Through Creativity
+              </h3>
+
+              <p className="text-gray-400 leading-8 mb-6">
+                I am <span className="text-violet-400 font-semibold">
+                  Yidnekachew Samuel
+                </span>,
+                a passionate creative professional dedicated to producing
+                high-quality visual and audio content.
+              </p>
+
+              <p className="text-gray-400 leading-8 mb-8">
+                I specialize in Graphic Design,
+                Video Editing,
+                Content Creation,
+                and Professional Voice Over,
+                helping brands tell their stories with creativity and impact.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4">
+
+                {[
+                  "Graphic Design",
+                  "Video Editing",
+                  "Content Creation",
+                  "Voice Over",
+                ].map((skill) => (
+
+                  <div
+                    key={skill}
+                    className="
+                      bg-zinc-900
+                      rounded-2xl
+                      p-5
+                      border
+                      border-zinc-800
+                    "
+                  >
+                    <h4 className="font-semibold text-violet-400">
+                      {skill}
+                    </h4>
+                  </div>
+
+                ))}
+
+              </div>
+
+            </motion.div>
+
+          </div>
+
+        </Container>
+      </section>
+
+      {/* Video Modal */}
+
+      {open && (
+
+        <div
+          className="
+            fixed
+            inset-0
+            z-[100]
+            bg-black/90
+            backdrop-blur-md
+            flex
+            items-center
+            justify-center
+            p-4
+          "
+        >
+
+          <button
+            onClick={() => setOpen(false)}
+            className="
+              absolute
+              top-6
+              right-6
+              bg-zinc-900
+              p-3
+              rounded-full
+              hover:bg-violet-600
+              transition
+            "
           >
+            <X size={24} />
+          </button>
 
-            <h3 className="text-3xl font-bold mb-6">
-              Bringing Ideas To Life Through Creativity
-            </h3>
-
-            <p className="text-gray-400 leading-8 mb-6">
-              I am <span className="text-violet-400 font-semibold">Yidnekachew Samuel</span>,
-              a passionate creative professional dedicated to producing
-              high-quality visual and audio content.
-            </p>
-
-            <p className="text-gray-400 leading-8 mb-8">
-              From graphic design and professional video editing
-              to content creation and voice-over production,
-              I help brands and individuals communicate their
-              stories with creativity and impact.
-            </p>
-
-            <div className="grid grid-cols-2 gap-4">
-
-              <div className="bg-zinc-900 rounded-2xl p-5">
-                <h4 className="text-violet-500 font-bold mb-2">
-                  Graphic Design
-                </h4>
-
-                <p className="text-gray-400 text-sm">
-                  Social media, branding & print designs.
-                </p>
-              </div>
-
-              <div className="bg-zinc-900 rounded-2xl p-5">
-                <h4 className="text-violet-500 font-bold mb-2">
-                  Video Editing
-                </h4>
-
-                <p className="text-gray-400 text-sm">
-                  Promotional, cinematic & YouTube videos.
-                </p>
-              </div>
-
-              <div className="bg-zinc-900 rounded-2xl p-5">
-                <h4 className="text-violet-500 font-bold mb-2">
-                  Content Creation
-                </h4>
-
-                <p className="text-gray-400 text-sm">
-                  Engaging content for modern audiences.
-                </p>
-              </div>
-
-              <div className="bg-zinc-900 rounded-2xl p-5">
-                <h4 className="text-violet-500 font-bold mb-2">
-                  Voice Over
-                </h4>
-
-                <p className="text-gray-400 text-sm">
-                  Professional narration in Amharic & English.
-                </p>
-              </div>
-
-            </div>
-
-          </motion.div>
+          <div
+            className="
+              w-full
+              max-w-5xl
+              aspect-video
+              rounded-2xl
+              overflow-hidden
+            "
+          >
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/GjE4t8eBA6I?autoplay=1"
+              title="Introduction Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
 
         </div>
 
-      </Container>
-    </section>
+      )}
+    </>
   );
 }
