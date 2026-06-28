@@ -35,167 +35,84 @@ export default function About() {
               transition={{ duration: 0.8 }}
             >
               <button
-                onClick={() => setOpen(true)}
-                className="
-                  group
-                  relative
-                  w-full
-                  h-[380px]
-                  overflow-hidden
-                  rounded-3xl
-                  border
-                  border-violet-500/20
-                  shadow-2xl
-                  shadow-violet-500/10
-                  transition-all
-                  duration-500
-                  hover:border-violet-500
-                "
-              >
+  onClick={() => setOpen(true)}
+  className="
+    group
+    relative
+    w-full
+    aspect-video
+    overflow-hidden
+    rounded-3xl
+    border
+    border-violet-500/20
+    shadow-2xl
+    shadow-violet-500/10
+    hover:border-violet-500
+    transition-all
+    duration-500
+  "
+>
+  {/* Thumbnail */}
+  <Image
+    src="/images/introduction-thumbnail.jpg"
+    alt="Introduction Video"
+    fill
+    priority
+    className="
+      object-cover
+      transition-transform
+      duration-500
+      group-hover:scale-105
+    "
+  />
 
-                {/* Thumbnail */}
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition" />
 
-                <Image
-                  src="/images/introduction-thumbnail.jpg"
-                  alt="Introduction"
-                  fill
-                  priority
-                  className="
-                    object-cover
-                    duration-500
-                    group-hover:scale-110
-                  "
-                />
+  {/* Play Button */}
+  <div className="absolute inset-0 flex items-center justify-center">
+    <div
+      className="
+        w-20
+        h-20
+        md:w-24
+        md:h-24
+        rounded-full
+        bg-violet-600
+        flex
+        items-center
+        justify-center
+        shadow-2xl
+        shadow-violet-500/40
+        group-hover:scale-110
+        transition
+      "
+    >
+      <Play
+        fill="white"
+        size={40}
+        className="ml-1"
+      />
+    </div>
+  </div>
 
-                {/* Overlay */}
-
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-black
-                    via-black/30
-                    to-transparent
-                  "
-                />
-
-                {/* Animated Glow */}
-
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-violet-500/10
-                    opacity-0
-                    group-hover:opacity-100
-                    transition
-                  "
-                />
-
-                {/* Play Button */}
-
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    flex
-                    items-center
-                    justify-center
-                  "
-                >
-
-                  <div
-                    className="
-                      h-24
-                      w-24
-                      rounded-full
-                      bg-violet-600
-                      flex
-                      items-center
-                      justify-center
-                      shadow-2xl
-                      shadow-violet-500/40
-                      group-hover:scale-110
-                      transition
-                    "
-                  >
-                    <Play
-                      fill="white"
-                      size={42}
-                      className="ml-1"
-                    />
-                  </div>
-
-                </div>
-
-                {/* Text */}
-
-                <div
-                  className="
-                    absolute
-                    bottom-7
-                    left-7
-                    right-7
-                  "
-                >
-
-                  <span
-                    className="
-                      inline-block
-                      px-3
-                      py-1
-                      rounded-full
-                      bg-violet-600
-                      text-xs
-                      font-semibold
-                      tracking-wider
-                    "
-                  >
-                    INTRODUCTION
-                  </span>
-
-                  <h3
-                    className="
-                      mt-4
-                      text-3xl
-                      font-bold
-                    "
-                  >
-                    View Introduction Video
-                  </h3>
-
-                  <p
-                    className="
-                      mt-2
-                      text-gray-300
-                    "
-                  >
-                    Discover my creative journey,
-                    experience and passion.
-                  </p>
-
-                </div>
-
-                {/* Duration */}
-
-                <div
-                  className="
-                    absolute
-                    bottom-5
-                    right-5
-                    bg-black/70
-                    px-3
-                    py-1
-                    rounded-lg
-                    text-sm
-                    backdrop-blur
-                  "
-                >
-                  1:35
-                </div>
-
-              </button>
+  {/* Duration */}
+  <div
+    className="
+      absolute
+      right-4
+      bottom-4
+      bg-black/80
+      px-3
+      py-1
+      rounded-lg
+      text-sm
+      font-medium
+    "
+  >
+    35 sec
+  </div>
+</button>
 
             </motion.div>
 
