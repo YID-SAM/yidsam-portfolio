@@ -26,30 +26,144 @@ export default function About() {
 
             {/* Video */}
 
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: .7 }}
-            >
-              <button
-                onClick={() => setOpen(true)}
-                className="
-                  group
-                  relative
-                  w-full
-                  h-[360px]
-                  rounded-3xl
-                  overflow-hidden
-                  border
-                  border-violet-500/20
-                  bg-gradient-to-br
-                  from-zinc-900
-                  to-black
-                  hover:border-violet-500
-                  transition-all
-                "
-              >
+           <motion.div
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: false }}
+  transition={{ duration: .7 }}
+>
+  <button
+    onClick={() => setOpen(true)}
+    className="
+      group
+      relative
+      w-full
+      h-[360px]
+      rounded-3xl
+      overflow-hidden
+      border
+      border-violet-500/20
+      hover:border-violet-500
+      transition-all
+      duration-500
+      shadow-xl
+      shadow-violet-500/20
+    "
+  >
+    {/* Thumbnail */}
+    <img
+      src="/images/introduction-thumbnail.jpg"
+      alt="Introduction Video"
+      className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        group-hover:scale-105
+        transition-transform
+        duration-500
+      "
+    />
+
+    {/* Dark Overlay */}
+    <div
+      className="
+        absolute
+        inset-0
+        bg-black/45
+        group-hover:bg-black/35
+        transition
+      "
+    />
+
+    {/* Play Button */}
+    <div
+      className="
+        absolute
+        inset-0
+        flex
+        items-center
+        justify-center
+      "
+    >
+      <div
+        className="
+          w-24
+          h-24
+          rounded-full
+          bg-violet-600
+          flex
+          items-center
+          justify-center
+          shadow-2xl
+          shadow-violet-500/40
+          group-hover:scale-110
+          transition
+          duration-300
+        "
+      >
+        <Play
+          fill="white"
+          size={42}
+          className="ml-1"
+        />
+      </div>
+    </div>
+
+    {/* Bottom Text */}
+    <div
+      className="
+        absolute
+        bottom-6
+        left-6
+        right-6
+      "
+    >
+      <span
+        className="
+          inline-block
+          px-3
+          py-1
+          rounded-full
+          bg-violet-600
+          text-xs
+          font-semibold
+          mb-3
+        "
+      >
+        INTRODUCTION
+      </span>
+
+      <h3 className="text-2xl font-bold text-white">
+        Watch My Introduction
+      </h3>
+
+      <p className="text-gray-200 mt-2">
+        Learn more about my creative journey.
+      </p>
+    </div>
+
+    {/* Duration Badge */}
+    <div
+      className="
+        absolute
+        right-4
+        bottom-4
+        bg-black/80
+        px-3
+        py-1
+        rounded-lg
+        text-sm
+        font-medium
+      "
+    >
+      1:35
+    </div>
+
+  </button>
+</motion.div>
+              
                 {/* Placeholder */}
 
                 <div className="absolute inset-0 bg-violet-600/10" />
