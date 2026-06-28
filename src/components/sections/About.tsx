@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Play, X } from "lucide-react";
+
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { Play, X } from "lucide-react";
 
 export default function About() {
   const [open, setOpen] = useState(false);
@@ -24,149 +26,72 @@ export default function About() {
 
           <div className="grid lg:grid-cols-2 gap-14 items-center">
 
-            {/* Video */}
+            {/* ================= Video Card ================= */}
 
-           <motion.div
-  initial={{ opacity: 0, x: -50 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: false }}
-  transition={{ duration: .7 }}
->
-  <button
-    onClick={() => setOpen(true)}
-    className="
-      group
-      relative
-      w-full
-      h-[360px]
-      rounded-3xl
-      overflow-hidden
-      border
-      border-violet-500/20
-      hover:border-violet-500
-      transition-all
-      duration-500
-      shadow-xl
-      shadow-violet-500/20
-    "
-  >
-    {/* Thumbnail */}
-    <img
-      src="/images/introduction-thumbnail.jpg"
-      alt="Introduction Video"
-      className="
-        absolute
-        inset-0
-        w-full
-        h-full
-        object-cover
-        group-hover:scale-105
-        transition-transform
-        duration-500
-      "
-    />
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.8 }}
+            >
+              <button
+                onClick={() => setOpen(true)}
+                className="
+                  group
+                  relative
+                  w-full
+                  h-[380px]
+                  overflow-hidden
+                  rounded-3xl
+                  border
+                  border-violet-500/20
+                  shadow-2xl
+                  shadow-violet-500/10
+                  transition-all
+                  duration-500
+                  hover:border-violet-500
+                "
+              >
 
-    {/* Dark Overlay */}
-    <div
-      className="
-        absolute
-        inset-0
-        bg-black/45
-        group-hover:bg-black/35
-        transition
-      "
-    />
+                {/* Thumbnail */}
 
-    {/* Play Button */}
-    <div
-      className="
-        absolute
-        inset-0
-        flex
-        items-center
-        justify-center
-      "
-    >
-      <div
-        className="
-          w-24
-          h-24
-          rounded-full
-          bg-violet-600
-          flex
-          items-center
-          justify-center
-          shadow-2xl
-          shadow-violet-500/40
-          group-hover:scale-110
-          transition
-          duration-300
-        "
-      >
-        <Play
-          fill="white"
-          size={42}
-          className="ml-1"
-        />
-      </div>
-    </div>
+                <Image
+                  src="/images/introduction-thumbnail.jpg"
+                  alt="Introduction"
+                  fill
+                  priority
+                  className="
+                    object-cover
+                    duration-500
+                    group-hover:scale-110
+                  "
+                />
 
-    {/* Bottom Text */}
-    <div
-      className="
-        absolute
-        bottom-6
-        left-6
-        right-6
-      "
-    >
-      <span
-        className="
-          inline-block
-          px-3
-          py-1
-          rounded-full
-          bg-violet-600
-          text-xs
-          font-semibold
-          mb-3
-        "
-      >
-        INTRODUCTION
-      </span>
+                {/* Overlay */}
 
-      <h3 className="text-2xl font-bold text-white">
-        Watch My Introduction
-      </h3>
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-black
+                    via-black/30
+                    to-transparent
+                  "
+                />
 
-      <p className="text-gray-200 mt-2">
-        Learn more about my creative journey.
-      </p>
-    </div>
+                {/* Animated Glow */}
 
-    {/* Duration Badge */}
-    <div
-      className="
-        absolute
-        right-4
-        bottom-4
-        bg-black/80
-        px-3
-        py-1
-        rounded-lg
-        text-sm
-        font-medium
-      "
-    >
-      1:35
-    </div>
-
-  </button>
-</motion.div>
-              
-                {/* Placeholder */}
-
-                <div className="absolute inset-0 bg-violet-600/10" />
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-violet-500/10
+                    opacity-0
+                    group-hover:opacity-100
+                    transition
+                  "
+                />
 
                 {/* Play Button */}
 
@@ -175,96 +100,161 @@ export default function About() {
                     absolute
                     inset-0
                     flex
-                    flex-col
                     items-center
                     justify-center
                   "
                 >
+
                   <div
                     className="
-                      w-24
                       h-24
+                      w-24
                       rounded-full
                       bg-violet-600
                       flex
                       items-center
                       justify-center
+                      shadow-2xl
+                      shadow-violet-500/40
                       group-hover:scale-110
                       transition
                     "
                   >
                     <Play
                       fill="white"
+                      size={42}
                       className="ml-1"
-                      size={40}
                     />
                   </div>
 
-                  <h3 className="text-2xl font-bold mt-8">
+                </div>
+
+                {/* Text */}
+
+                <div
+                  className="
+                    absolute
+                    bottom-7
+                    left-7
+                    right-7
+                  "
+                >
+
+                  <span
+                    className="
+                      inline-block
+                      px-3
+                      py-1
+                      rounded-full
+                      bg-violet-600
+                      text-xs
+                      font-semibold
+                      tracking-wider
+                    "
+                  >
+                    INTRODUCTION
+                  </span>
+
+                  <h3
+                    className="
+                      mt-4
+                      text-3xl
+                      font-bold
+                    "
+                  >
                     View Introduction Video
                   </h3>
 
-                  <p className="text-gray-400 mt-2">
-                    Click to watch
+                  <p
+                    className="
+                      mt-2
+                      text-gray-300
+                    "
+                  >
+                    Discover my creative journey,
+                    experience and passion.
                   </p>
+
                 </div>
+
+                {/* Duration */}
+
+                <div
+                  className="
+                    absolute
+                    bottom-5
+                    right-5
+                    bg-black/70
+                    px-3
+                    py-1
+                    rounded-lg
+                    text-sm
+                    backdrop-blur
+                  "
+                >
+                  1:35
+                </div>
+
               </button>
+
             </motion.div>
 
-            {/* About */}
+            {/* ================= About Content ================= */}
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
+              transition={{ duration: .8 }}
             >
 
-              <h3 className="text-3xl font-bold mb-6">
+              <h3 className="text-4xl font-bold mb-6">
                 Bringing Ideas To Life Through Creativity
               </h3>
 
               <p className="text-gray-400 leading-8 mb-6">
-                I am <span className="text-violet-400 font-semibold">
+                I'm{" "}
+                <span className="text-violet-400 font-semibold">
                   Yidnekachew Samuel
-                </span>,
-                a passionate creative professional dedicated to producing
-                high-quality visual and audio content.
+                </span>
+                , a passionate creative professional dedicated to producing
+                high-quality visual content, compelling videos,
+                engaging social media content and professional
+                voice over productions.
               </p>
 
-              <p className="text-gray-400 leading-8 mb-8">
-                I specialize in Graphic Design,
-                Video Editing,
-                Content Creation,
-                and Professional Voice Over,
-                helping brands tell their stories with creativity and impact.
+              <p className="text-gray-400 leading-8 mb-10">
+                My goal is simple:
+                transform ideas into visuals that connect,
+                inspire and leave a lasting impression.
               </p>
 
-              <div className="grid grid-cols-2 gap-4">
-
-                {[
+              <div className="grid grid-cols-2 gap-5"> 
+                                {[
                   "Graphic Design",
                   "Video Editing",
                   "Content Creation",
                   "Voice Over",
                 ].map((skill) => (
-
                   <div
                     key={skill}
                     className="
-                      bg-zinc-900
                       rounded-2xl
-                      p-5
                       border
                       border-zinc-800
+                      bg-zinc-900
+                      p-6
+                      transition
+                      duration-300
+                      hover:border-violet-500
+                      hover:-translate-y-1
                     "
                   >
                     <h4 className="font-semibold text-violet-400">
                       {skill}
                     </h4>
                   </div>
-
                 ))}
-
               </div>
 
             </motion.div>
@@ -272,63 +262,85 @@ export default function About() {
           </div>
 
         </Container>
+
       </section>
 
-      {/* Video Modal */}
+      {/* ================= Video Modal ================= */}
 
-      {open && (
+      <AnimatePresence>
 
-        <div
-          className="
-            fixed
-            inset-0
-            z-[100]
-            bg-black/90
-            backdrop-blur-md
-            flex
-            items-center
-            justify-center
-            p-4
-          "
-        >
+        {open && (
 
-          <button
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="
+              fixed
+              inset-0
+              z-[100]
+              bg-black/90
+              backdrop-blur-md
+              flex
+              items-center
+              justify-center
+              p-4
+            "
             onClick={() => setOpen(false)}
-            className="
-              absolute
-              top-6
-              right-6
-              bg-zinc-900
-              p-3
-              rounded-full
-              hover:bg-violet-600
-              transition
-            "
           >
-            <X size={24} />
-          </button>
 
-          <div
-            className="
-              w-full
-              max-w-5xl
-              aspect-video
-              rounded-2xl
-              overflow-hidden
-            "
-          >
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/GjE4t8eBA6I?autoplay=1"
-              title="Introduction Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
+            <motion.div
+              initial={{ scale: .8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: .8, opacity: 0 }}
+              transition={{ duration: .3 }}
+              className="
+                relative
+                w-full
+                max-w-5xl
+                aspect-video
+                rounded-2xl
+                overflow-hidden
+                shadow-2xl
+              "
+              onClick={(e) => e.stopPropagation()}
+            >
 
-        </div>
+              {/* Close Button */}
 
-      )}
+              <button
+                onClick={() => setOpen(false)}
+                className="
+                  absolute
+                  top-4
+                  right-4
+                  z-20
+                  bg-black/70
+                  p-3
+                  rounded-full
+                  hover:bg-violet-600
+                  transition
+                "
+              >
+                <X size={22} />
+              </button>
+
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/GjE4t8eBA6I?autoplay=1&rel=0"
+                title="Introduction Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+
+            </motion.div>
+
+          </motion.div>
+
+        )}
+
+      </AnimatePresence>
+
     </>
   );
 }
