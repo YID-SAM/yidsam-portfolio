@@ -8,15 +8,15 @@ import SectionTitle from "@/components/ui/SectionTitle";
 
 const voiceSamples = [
   {
-    
+    title: "Voice Demo 1",
     file: "/audio/voice-demo-1.mp3",
   },
   {
-   
+    title: "Voice Demo 2",
     file: "/audio/voice-demo-2.mp3",
   },
   {
-    
+    title: "Voice Demo 3",
     file: "/audio/voice-demo-3.mp3",
   },
 ];
