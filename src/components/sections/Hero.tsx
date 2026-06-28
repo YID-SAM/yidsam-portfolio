@@ -8,19 +8,20 @@ import CountUp from "react-countup";
 export default function Hero() {
   return (
     <section
-      className="
-        relative
-        min-h-screen
-        flex
-        items-center
-        bg-gradient-to-b
-        from-black
-        via-zinc-950
-        to-black
-        pt-28
-        overflow-x-hidden overflow-y-visible
-      "
-    >
+  className="
+    relative
+    min-h-screen
+    flex
+    items-center
+    bg-gradient-to-b
+    from-black
+    via-zinc-950
+    to-black
+    pt-36
+    md:pt-28
+    overflow-hidden
+  "
+>
       {/* Background Glow */}
       <div
   className="
@@ -216,7 +217,7 @@ export default function Hero() {
 
   <div>
     <h3 className="text-3xl md:text-4xl font-bold text-violet-500">
-      <CountUp end={100} duration={2.5} />+
+      <CountUp end={50} duration={2.5} />+
     </h3>
 
     <p className="text-gray-400 mt-2">
@@ -287,20 +288,22 @@ export default function Hero() {
 
             {/* Image */}
             <div
-              className="
-                relative
-                w-[330px]
-                h-[330px]
-                md:w-[430px]
-                md:h-[430px]
-                rounded-full
-                overflow-hidden
-                border-4
-                border-violet-500/40
-                shadow-2xl
-                shadow-violet-500/30
-              "
-            >
+  className="
+    relative
+    w-[270px]
+    h-[270px]
+    sm:w-[320px]
+    sm:h-[320px]
+    md:w-[430px]
+    md:h-[430px]
+    rounded-full
+    overflow-hidden
+    border-4
+    border-violet-500/40
+    shadow-2xl
+    shadow-violet-500/30
+  "
+>
               <Image
                 src="/images/profile/profile.jpg"
                 alt="YIDSAM"

@@ -60,22 +60,23 @@ export default function Certificates() {
               "
             >
 
-              <div className="relative h-[420px] overflow-hidden">
+              <div className="overflow-hidden bg-white">
 
-                <Image
-                  src={certificate.image}
-                  alt={certificate.title}
-                  fill
-                  className="
-                    object-contain
-                    bg-white
-                    transition-transform
-                    duration-700
-                    group-hover:scale-105
-                  "
-                />
+  <Image
+    src={certificate.image}
+    alt={certificate.title}
+    width={1200}
+    height={1700}
+    className="
+      w-full
+      h-auto
+      transition-transform
+      duration-700
+      group-hover:scale-105
+    "
+  />
 
-              </div>
+</div>
 
               <div className="p-6">
 
