@@ -161,36 +161,37 @@ export default function Hero() {
             <a
               href="#portfolio"
               className="
-                px-8
-                py-4
-                rounded-xl
-                bg-violet-600
-                font-semibold
-                transition-all
-                duration-300
-                hover:scale-105
-                hover:bg-violet-500
-                hover:shadow-xl
-                hover:shadow-violet-500/40
-              "
+  px-8
+  py-4
+  rounded-xl
+  bg-violet-600
+  font-bold
+  transition-all
+  duration-300
+  hover:scale-105
+  hover:bg-violet-500
+  hover:shadow-xl
+  hover:shadow-violet-500/40
+"
             >
               View My Work
             </a>
 
             <a
               href="#contact"
-              className="
-                px-8
-                py-4
-                rounded-xl
-                border
-                border-zinc-700
-                transition-all
-                duration-300
-                hover:border-violet-500
-                hover:bg-violet-500/10
-                hover:scale-105
-              "
+             className="
+  px-8
+  py-4
+  rounded-xl
+  border
+  border-zinc-700
+  font-bold
+  transition-all
+  duration-300
+  hover:border-violet-500
+  hover:bg-violet-500/10
+  hover:scale-105
+"
             >
               Contact Me
             </a>
