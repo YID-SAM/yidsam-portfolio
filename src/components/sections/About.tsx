@@ -242,13 +242,13 @@ export default function About() {
                 <X size={22} />
               </button>
 
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/Yc47n_DBego?autoplay=1&rel=0"
-                title="Introduction Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+             <iframe
+  className="w-full h-full"
+  src="https://www.youtube.com/embed/Yc47n_DBego?autoplay=1&rel=0"
+  title="Introduction Video"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+/>
 
             </motion.div>
 
