@@ -8,7 +8,17 @@ import { Play, X } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 
-const gallery = [
+type GalleryItem =
+  | {
+      type: "image";
+      src: string;
+    }
+  | {
+      type: "video";
+      videoId: string;
+    };
+
+const gallery: GalleryItem[] = [
   {
     type: "image",
     src: "/images/project/project1.jpg",
@@ -27,15 +37,11 @@ const gallery = [
   },
   {
     type: "video",
-      src: "",
-    thumbnail: "https://img.youtube.com/vi/1_28MInemD4/maxresdefault.jpg",
-    video: "https://www.youtube.com/embed/1_28MInemD4?autoplay=1",
+    videoId: "1_28MInemD4",
   },
   {
     type: "video",
-      src: "",
-    thumbnail: "https://img.youtube.com/vi/sQerrHdmA7I/maxresdefault.jpg",
-    video: "https://www.youtube.com/embed/sQerrHdmA7I?autoplay=1",
+    videoId: "sQerrHdmA7I",
   },
 ];
 
@@ -49,7 +55,6 @@ export default function Portfolio() {
         className="py-28 bg-zinc-950"
       >
         <Container>
-
           <SectionTitle
             title="Portfolio"
             subtitle="A collection of my recent creative works."
@@ -78,6 +83,7 @@ export default function Portfolio() {
                   duration-500
                 "
               >
+
                 {item.type === "image" ? (
 
                   <a
@@ -106,59 +112,47 @@ export default function Portfolio() {
                 ) : (
 
                   <button
-                    onClick={() => setSelectedVideo(item.video)}
-                    className="block w-full"
+                    onClick={() => setSelectedVideo(item.videoId)}
+                    className="relative h-72 w-full group"
                   >
-                    <div className="relative h-72 group">
 
-                      <Image
-                        src={item.thumbnail}
-                        alt="Video Thumbnail"
-                        fill
-                        sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
-                        unoptimized
-                        className="
-                          object-cover
-                          group-hover:scale-105
-                          transition-transform
-                          duration-700
-                        "
-                      />
+                    <img
+                      src={`https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg`}
+                      alt="Video Thumbnail"
+                      className="
+                        w-full
+                        h-full
+                        object-cover
+                        group-hover:scale-105
+                        transition-transform
+                        duration-700
+                      "
+                    />
+
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
 
                       <div
                         className="
-                          absolute
-                          inset-0
-                          bg-black/40
+                          w-20
+                          h-20
+                          rounded-full
+                          bg-violet-600
                           flex
                           items-center
                           justify-center
+                          group-hover:scale-110
+                          transition
                         "
                       >
-
-                        <div
-                          className="
-                            w-20
-                            h-20
-                            rounded-full
-                            bg-violet-600
-                            flex
-                            items-center
-                            justify-center
-                            group-hover:scale-110
-                            transition
-                          "
-                        >
-                          <Play
-                            fill="white"
-                            size={34}
-                            className="ml-1"
-                          />
-                        </div>
-
+                        <Play
+                          fill="white"
+                          size={34}
+                          className="ml-1"
+                        />
                       </div>
 
                     </div>
+
                   </button>
 
                 )}
@@ -171,10 +165,9 @@ export default function Portfolio() {
 
         </Container>
       </section>
-      ```
-      {/* Video Modal */}
 
       {selectedVideo && (
+
         <div
           className="
             fixed
@@ -188,7 +181,7 @@ export default function Portfolio() {
             p-4
           "
         >
-          {/* Close Button */}
+
           <button
             onClick={() => setSelectedVideo(null)}
             className="
@@ -205,7 +198,6 @@ export default function Portfolio() {
             <X size={24} />
           </button>
 
-          {/* Video */}
           <div
             className="
               w-full
@@ -215,6 +207,7 @@ export default function Portfolio() {
               overflow-hidden
             "
           >
+
             <iframe
               className="w-full h-full"
               src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
@@ -222,8 +215,11 @@ export default function Portfolio() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
+
           </div>
+
         </div>
+
       )}
     </>
   );
