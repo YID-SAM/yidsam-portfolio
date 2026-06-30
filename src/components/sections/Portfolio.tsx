@@ -27,11 +27,13 @@ const gallery = [
   },
   {
     type: "video",
+      src: "",
     thumbnail: "https://img.youtube.com/vi/1_28MInemD4/maxresdefault.jpg",
     video: "https://www.youtube.com/embed/1_28MInemD4?autoplay=1",
   },
   {
     type: "video",
+      src: "",
     thumbnail: "https://img.youtube.com/vi/sQerrHdmA7I/maxresdefault.jpg",
     video: "https://www.youtube.com/embed/sQerrHdmA7I?autoplay=1",
   },
